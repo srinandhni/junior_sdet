@@ -3,16 +3,30 @@ pipeline {
 
     stages {
         stage('Checkout') {
-            echo 'Checking out...'
+            steps {
+                git branch: 'main', url: 'https://github.com/srinandhni/junior_sdet.git'
+            }
         }
+
         stage('Build') {
-            echo 'Building...'
+            steps {
+                mvn clean install
+            }
         }
-        stage('Run Application') {
-            echo 'Running...'
-        }
+
         stage('Test') {
-            echo 'Testing...'
+            steps {
+              mvn test
+            }
+        }
+
+        stage('Deploy') {
+            when {
+                branch 'main'
+            }
+            steps {
+                echo 'Deploying application...'
+            }
         }
     }
 }
