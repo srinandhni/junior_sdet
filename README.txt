@@ -1,0 +1,1 @@
+This is a sample project to evaluate Git and Jenkins skills.
