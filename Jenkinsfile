@@ -10,13 +10,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                mvn clean install
+                sh 'mvn clean install'
             }
         }
 
         stage('Test') {
             steps {
-              mvn test
+              sh 'mvn test'
             }
         }
 
