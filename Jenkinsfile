@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/srinandhni/junior_sdet.git'
+                git branch: 'master', url: 'https://github.com/srinandhni/junior_sdet.git'
             }
         }
 
@@ -24,7 +24,7 @@ pipeline {
 
         stage('Deploy') {
             when {
-                branch 'master'
+                branch 'main'
             }
             steps {
                 echo 'Deploying application...'
