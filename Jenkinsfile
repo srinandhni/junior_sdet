@@ -2,6 +2,7 @@ pipeline {
     agent any
     tools{
         maven 'Maven-3.9.9'
+        jdk 'JDK21'
     }
     stages {
         stage('Checkout') {
@@ -29,6 +30,11 @@ pipeline {
             steps {
                 echo 'Deploying application...'
             }
+        }
+    }
+    post {
+        always {
+            junit 'target/surefire-reports/*.xml'
         }
     }
 }
